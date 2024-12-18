@@ -1,0 +1,26 @@
+{
+  "name": "fullhaus/property-merger",
+  "description": "Property Merger",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "version": "2.0.0",
+  "autoload": {
+    "psr-4": {
+      "FULLHAUS\\PropertyMerger\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "FULLHAUS\\PropertyMerger\\FhPropertyMerger",
+    "label": {
+      "de-DE": "FULLHAUS property merger",
+      "en-GB": "FULLHAUS property merger"
+    },
+    "require": {
+      "shopware/core": "6.5.*"
+    },
+    "description": {
+      "de-DE": "Führen Sie Ihre Eigenschaftsfelder einfach zusammen.",
+      "en-GB": "Merge your properties fields easily."
+    }
+  }
+}
