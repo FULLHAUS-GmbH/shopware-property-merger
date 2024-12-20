@@ -12,34 +12,38 @@ use Shopware\Core\Framework\Uuid\Uuid;
 
 readonly class Group
 {
-  private Context $context;
+    private Context $context;
 
-  public function __construct(private EntityRepository $groupRepository)
-  {
-    $this->context = Context::createDefaultContext();
-  }
+    public function __construct(private EntityRepository $groupRepository)
+    {
+        $this->context = Context::createDefaultContext();
+    }
 
-  public function getContext(): Context
-  {
-    return $this->context;
-  }
+    public function getContext(): Context
+    {
+        return $this->context;
+    }
 
-  public function getAll(): array
-  {
-    return $this->getByIds();
-  }
+    public function getAll(): array
+    {
+        return $this->getByIds();
+    }
 
     public function getByIds(array $ids = []): array
     {
-        $binaryIds = [];
-        foreach ($ids as $id) {
-            if (!Uuid::isValid($id)) {
-                throw new \InvalidArgumentException("Invalid UUID format: {$id}");
+        $criteria = new Criteria();
+
+        if (!empty($ids)) {
+            $binaryIds = [];
+            foreach ($ids as $id) {
+                if (!Uuid::isValid($id)) {
+                    throw new \InvalidArgumentException("Invalid UUID format: {$id}");
+                }
+                $binaryIds[] = Uuid::fromHexToBytes($id);
             }
-            $binaryIds[] = Uuid::fromHexToBytes($id);
+            $criteria->setIds($binaryIds);
         }
 
-        $criteria = new Criteria($binaryIds);
         $criteria->addAssociation('options.group')
             ->addSorting(new FieldSorting('name', FieldSorting::ASCENDING));
 
@@ -69,11 +73,11 @@ readonly class Group
     }
 
     public function delete(string $id): void
-  {
-    $this->groupRepository->delete([
-      [
-          'id' => $id,
-      ]
-    ], $this->getContext());
-  }
+    {
+        $this->groupRepository->delete([
+            [
+                'id' => $id,
+            ]
+        ], $this->getContext());
+    }
 }
