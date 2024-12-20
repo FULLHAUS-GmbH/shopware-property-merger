@@ -40,25 +40,25 @@ This plugin is under active development and includes a known issue with UUID con
       bin/console plugin:refresh
       bin/console plugin:install --activate FULLHAUSPropertyMerger
 
-##Usage
+## Usage
 
 The plugin includes console commands to perform various operations. Use the following commands to list available options and execute merges:
 
-###List Property IDs
+### List Property IDs
    ```bash
       bin/console property-merger:group:list
 ```
 
-###List Property IDs
+### List Property IDs
    ```bash
       bin/console property-merger:group:list
 ```
 
-###Merge Property Options
+### Merge Property Options
    ```bash
       bin/console property-merger:group:option:merge
 ```
 
-##Known Issues
+## Known Issues
 - UUID Conversion Issue: The merge command may fail in certain cases due to unresolved UUID conversion errors. Logs have been added to assist in debugging. If you encounter issues, please share your findings through a GitHub issue or pull request.
 - Compatibility Testing: The plugin has been tested primarily with Shopware 6.5.x. Please report any incompatibility with other versions.
