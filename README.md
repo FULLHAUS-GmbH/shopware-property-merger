@@ -38,7 +38,7 @@ This plugin is under active development and includes a known issue with UUID con
 3. Install the plugin in Shopware:
       ```bash
       bin/console plugin:refresh
-      bin/console plugin:install --activate FULLHAUSPropertyMerger
+      bin/console plugin:install --activate FhPropertyMerger
 
 ## Usage
 
@@ -46,17 +46,12 @@ The plugin includes console commands to perform various operations. Use the foll
 
 ### List Property IDs
    ```bash
-      bin/console property-merger:group:list
-```
-
-### List Property IDs
-   ```bash
-      bin/console property-merger:group:list
+      bin/console fullhaus:property-list
 ```
 
 ### Merge Property Options
    ```bash
-      bin/console property-merger:group:option:merge
+      bin/console fullhaus:property-merge -s <SOURCE_ID> -d <DESTINATION_ID>
 ```
 
 ## Known Issues
